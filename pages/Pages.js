@@ -8,15 +8,18 @@ function Page() {
         { name: 'Judul konten disini', code: '#2ecc71', icon: 'info-circle' },
         { name: 'Judul konten disini', code: '#3498db', icon: 'check-square' },
         { name: 'Judul konten disini', code: '#9b59b6', icon: 'book' },
-        { name: 'Judul konten disini', code: '#deab90', icon: 'gamepad' },
-        { name: 'Judul konten disini', code: '#deab90', icon: 'gamepad' },
+        { name: 'Judul konten disini', code: '#e76f51', icon: 'gamepad' },
+        { name: 'Judul konten disini', code: '#e5989b', icon: 'gamepad' },
         { name: 'Judul konten disini', code: '#deab90', icon: 'gamepad' },
     ]);
 
     return (
         <View style={styles.container}>
             <View style={styles.heading}>
-                <Text style={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </Text>
+                <Text style={styles.description}>
+                    <Text style={{ fontFamily: 'Raleway_700Bold' }}>Lorem ipsum </Text>
+                    is simply dummy text of the printing and typesetting industry.
+                </Text>
             </View>
             <View style={styles.shapes}></View>
             <FlatGrid
@@ -63,7 +66,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Raleway_300Light',
         color: "rgba(255,255,255,1)",
         fontSize: 16,
-        marginTop: 10,
+        lineHeight: 20,
+        marginTop: 16,
         marginLeft: 10,
     },
     gridView: {
@@ -92,10 +96,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     columnsatu: {
-        flex: 4,
+        flex: 7,
     },
     columndua: {
-        flex: 1,
+        flex: 2,
+        justifyContent: 'center',
     },
     buttonStyle: {
         height: '60%',

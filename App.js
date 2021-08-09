@@ -7,6 +7,7 @@ import { useFonts, Raleway_300Light, Raleway_500Medium, Raleway_700Bold, Raleway
 import Home from './pages/Home';
 import Page from './pages/Pages';
 import Testing from './pages/Testing';
+import { Ionicons } from '@expo/vector-icons';
 
 function HomeScreen({ navigation }) {
     const [isLoading, setLoading] = useState(true);
@@ -93,7 +94,7 @@ function BerandaStackScreen() {
                     backgroundColor: '#296FD7',
                 },
                 headerTintColor: '#fff',
-            }} name="Page" component={Page} />
+            }} name="Tips Parent" component={Page} />
         </Stack.Navigator>
     )
 }
@@ -101,7 +102,7 @@ function BerandaStackScreen() {
 function TestingStackScreen() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Testing" component={Testing} />
+            <Stack.Screen name="Tips Parent" component={Testing} />
         </Stack.Navigator>
     )
 }
@@ -130,9 +131,33 @@ export default function App() {
         return (
             <NavigationContainer>
                 <Tab.Navigator screenOptions={{ headerShown: false }}>
-                    <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-                    <Tab.Screen name="BerandaStack" component={BerandaStackScreen}/>
-                    <Tab.Screen name="TestingStack" component={TestingStackScreen}/>
+                    <Tab.Screen 
+                        name="BerandaStack" 
+                        component={BerandaStackScreen}
+                        options={{
+                            tabBarLabel: 'Beranda',
+                            tabBarIcon: ({ color, size }) => (
+                                <Ionicons name="home-sharp" size={size} color={color} />
+                            )
+                        }} />
+                    <Tab.Screen 
+                        name="HomeStack" 
+                        component={HomeStackScreen}
+                        options={{
+                            tabBarLabel: 'Setelan',
+                            tabBarIcon: ({ color, size }) => (
+                                <Ionicons name="settings" size={size} color={color} />
+                            )
+                        }} />
+                    <Tab.Screen 
+                        name="TestingStack" 
+                        component={TestingStackScreen}
+                        options={{
+                            tabBarLabel: 'Tentang',
+                            tabBarIcon: ({ color, size }) => (
+                                <Ionicons name="information-circle-sharp" size={size} color={color} />
+                            )
+                        }}/>
                 </Tab.Navigator>
             </NavigationContainer>
         );

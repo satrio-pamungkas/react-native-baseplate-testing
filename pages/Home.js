@@ -6,14 +6,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Background from '../assets/Pattern.png';
+import Parenting from '../assets/menu/Parenting.png';
+import Tips from '../assets/menu/Tips.png';
+import Habit from '../assets/menu/Habit.png';
+import Learning from '../assets/menu/Learning.png';
+import Games from '../assets/menu/Games.png';
 
 export default function Home({ navigation }) {
     const [items, setItems] = React.useState([
-        { name: 'Parent Tahu', code: '#1abc9c', icon: 'user-check' },
-        { name: 'Tips Parent', code: '#2ecc71', icon: 'info-circle' },
-        { name: 'Daily Habit', code: '#3498db', icon: 'check-square' },
-        { name: 'Fun Learning', code: '#9b59b6', icon: 'book' },
-        { name: 'Fun Games', code: '#deab90', icon: 'gamepad' },
+        { name: 'Parent Tahu', code: '#1abc9c', icon: 'user-check', img: Parenting },
+        { name: 'Tips Parent', code: '#2ecc71', icon: 'info-circle', img: Tips },
+        { name: 'Daily Habit', code: '#3498db', icon: 'check-square', img: Habit },
+        { name: 'Fun Learning', code: '#9b59b6', icon: 'book', img: Learning },
+        { name: 'Fun Games', code: '#e76f51', icon: 'gamepad', img: Games },
     ]);
 
     let [fontsLoaded] = useFonts({
@@ -43,13 +48,14 @@ export default function Home({ navigation }) {
                     spacing={10}
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => {
-                            navigation.navigate('Page');
+                            navigation.navigate('Tips Parent');
                         }}>
                             <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
                             {/* <Image source={Background} style={styles.shapeBackground}></Image> */}
-                                <FontAwesome5 name={item.icon} size={24} color="white" style={{ marginBottom: 10 }}/>
+                                {/* <FontAwesome5 name={item.icon} size={24} color="white" style={{ marginBottom: 10 }}/> */}
+                                <Image source={item.img} style={styles.imgStyle}></Image>
                                 <Text style={styles.itemName}>{item.name}</Text>
-                                <Text style={styles.itemCode}>Deskripsi Singkat</Text>
+                                {/* <Text style={styles.itemCode}>Deskripsi Singkat</Text> */}
                             </View>
                         </TouchableOpacity>
                     )}
@@ -108,9 +114,11 @@ const styles = StyleSheet.create({
         height: 150,
     },
     itemName: {
-        fontSize: 20,
+        fontSize: 18,
         color: '#fff',
         fontFamily: 'Raleway_700Bold',
+        paddingTop: 10,
+        paddingBottom: 10,
     },
     itemCode: {
         fontSize: 12,
@@ -122,6 +130,12 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         position: 'absolute',
+    },
+    imgStyle: {
+        justifyContent: 'center',
+        width: '60%',
+        height: '50%',
+        marginLeft: 10,
     }
 });
 

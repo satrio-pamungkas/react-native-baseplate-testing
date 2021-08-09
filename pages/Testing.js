@@ -21,7 +21,7 @@ export default function Example() {
     }, []);
 
     return (
-        <ScrollView>
+        <ScrollView style={{ backgroundColor: 'white' }}>
             <Text style={styles.heading}>Judul konten disini dan dapat diubah</Text>
             <Text style={styles.author}>Penyunting: Muhammad Raihan</Text>
             { imageUrl ? (
@@ -46,13 +46,14 @@ export default function Example() {
                 sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
                 Aldus PageMaker including versions of Lorem Ipsum.
                 {deskripsi}
-                
             </Text>
             <YoutubePlayer
                 height={250}
                 play={playing}
-                videoId={"iee2TATGMyI"}
+                videoId={"eIho2S0ZahI"}
                 onChangeState={onStateChange}/>
+            <Text style={styles.referensi}>Referensi</Text>
+            <Text style={styles.referensiList}>{'\u2022'} PageMaker including versions of Lorem Ipsum</Text>
         </ScrollView>
     );
 }
@@ -63,8 +64,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 24,
         textAlign: 'justify',
-        paddingLeft: 20,
-        paddingRight: 20,
+        padding: 20,
     },
     heading: {
         fontFamily: 'Raleway_700Bold',
@@ -84,6 +84,21 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 10,
+        paddingBottom: 20,
+    },
+    referensi: {
+        fontFamily: 'Raleway_700Bold',
+        fontSize: 22,
+        color: 'black',
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    referensiList: {
+        fontFamily: 'Raleway_300Light',
+        fontSize: 16,
+        color: 'black',
+        paddingLeft: 20,
+        paddingTop: 20,
         paddingBottom: 20,
     }
 });
