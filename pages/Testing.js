@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, ScrollView, Text, Alert } from 'react-native';
+import { StyleSheet, ScrollView, Text, Alert, Image } from 'react-native';
 import { FlatGrid } from 'react-native-super-grid';
 import YoutubePlayer from "react-native-youtube-iframe";
 
 export default function Example() {
     let deskripsi = "\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry."
+    let imageUrl = "https://img.freepik.com/free-vector/colorful-mountains-landscape-background_52683-24001.jpg?size=626&ext=jpg";
 
     const [playing, setPlaying] = useState(false);
 
@@ -21,11 +22,13 @@ export default function Example() {
 
     return (
         <ScrollView>
-            <YoutubePlayer
-                height={250}
-                play={playing}
-                videoId={"iee2TATGMyI"}
-                onChangeState={onStateChange}/>
+            <Text style={styles.heading}>Judul konten disini dan dapat diubah</Text>
+            <Text style={styles.author}>Penyunting: Muhammad Raihan</Text>
+            { imageUrl ? (
+                <Image source={{ uri: imageUrl }} style={styles.image}></Image>
+            ) : (
+                null
+            )}
             <Text style={styles.text}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -45,6 +48,11 @@ export default function Example() {
                 {deskripsi}
                 
             </Text>
+            <YoutubePlayer
+                height={250}
+                play={playing}
+                videoId={"iee2TATGMyI"}
+                onChangeState={onStateChange}/>
         </ScrollView>
     );
 }
@@ -55,6 +63,27 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 24,
         textAlign: 'justify',
-        padding: 20,
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    heading: {
+        fontFamily: 'Raleway_700Bold',
+        fontSize: 28,
+        color: 'black',
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 20,
+    },
+    image: {
+        height: 250,
+        width: '100%',
+    },
+    author: {
+        fontFamily: 'Raleway_500Medium',
+        fontSize: 14,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 10,
+        paddingBottom: 20,
     }
 });

@@ -3,6 +3,7 @@ import { ActivityIndicator, FlatList, StyleSheet, Text, View, StatusBar, Touchab
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useFonts, Raleway_300Light, Raleway_500Medium, Raleway_700Bold, Raleway_800ExtraBold } from '@expo-google-fonts/raleway';
 import Home from './pages/Home';
 import Page from './pages/Pages';
 import Testing from './pages/Testing';
@@ -106,15 +107,36 @@ function TestingStackScreen() {
 }
 
 export default function App() {
-    return (
-        <NavigationContainer>
-            <Tab.Navigator screenOptions={{ headerShown: false }}>
-                <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-                <Tab.Screen name="BerandaStack" component={BerandaStackScreen}/>
-                <Tab.Screen name="TestingStack" component={TestingStackScreen}/>
-            </Tab.Navigator>
-        </NavigationContainer>
-    );
+    const [items, setItems] = React.useState([
+        { name: 'Parent Tahu', code: '#1abc9c', icon: 'user-check' },
+        { name: 'Tips Parent', code: '#2ecc71', icon: 'info-circle' },
+        { name: 'Daily Habit', code: '#3498db', icon: 'check-square' },
+        { name: 'Fun Learning', code: '#9b59b6', icon: 'book' },
+        { name: 'Fun Games', code: '#deab90', icon: 'gamepad' },
+    ]);
+
+    let [fontsLoaded] = useFonts({
+        Raleway_300Light,
+        Raleway_500Medium,
+        Raleway_700Bold,
+        Raleway_800ExtraBold,
+    });
+
+    if (!fontsLoaded) {
+        return (
+            <Text>Loading ...</Text>
+        )
+    } else {
+        return (
+            <NavigationContainer>
+                <Tab.Navigator screenOptions={{ headerShown: false }}>
+                    <Tab.Screen name="HomeStack" component={HomeStackScreen} />
+                    <Tab.Screen name="BerandaStack" component={BerandaStackScreen}/>
+                    <Tab.Screen name="TestingStack" component={TestingStackScreen}/>
+                </Tab.Navigator>
+            </NavigationContainer>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
